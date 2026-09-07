@@ -11,21 +11,9 @@ namespace BattleArena
     {
         static void Main(string[] args)
         {
-            Warrior Raymond = new Warrior();
-            Raymond.Name = "Raymond";
-            Raymond.Health = 100;
-            Raymond.AttackPower = 30;
-
-            Warrior Kirk = new Warrior();
-            Kirk.Name = "Kirk";
-            Kirk.Health = 200;
-            Kirk.AttackPower = 15;
-
-            Warrior Eloi = new Warrior();
-            Eloi.Name = "Eloi";
-            Eloi.Health = 150;
-            Eloi.AttackPower = 25;
-
+            Warrior Raymond = new Warrior("Raymond", 100, 30);
+            Warrior Kirk = new Warrior("Kirk", 150, 50);
+            Warrior Eloi = new Warrior("Eloi", 200, 40);
 
 
             Console.WriteLine($"Raymond: {Raymond.Name} has " +
