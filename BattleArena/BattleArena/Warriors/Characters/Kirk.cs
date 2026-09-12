@@ -7,26 +7,21 @@ using System.Xml.Linq;
 
 namespace BattleArena.Warriors
 {
-    public class Fighter : Warrior
+    public class Kirk : Warrior
     {
         public int SwordDamage { get; private set; }
-        public Fighter(string name, int health, int attackPower, int swordDamage)
-            : base(name, health, attackPower)
+        public Kirk(int health, int attackPower, int swordDamage)
+            : base("Kirk", health, attackPower, WarriorType.Fighter)
         {
             SwordDamage = swordDamage;
             attackPower += swordDamage;
         }
 
-        public Fighter(string name, int health, int attackPower)
-            : base(name, health, attackPower)
-        {
-            SwordDamage = SwordDamage;
-        }
-
         public override void Attack(Warrior target)
         {
-            var totalDamage = target.AttackPower + SwordDamage;
-            TakeDamage(totalDamage);
+            var dmginfo = new DamageInfo(AttackPower, "Ewan", HasCriticalChance);
+            TakeDamage(dmginfo);
+
             Console.WriteLine($"\t-> {Name}: Ano na Boi kapa! {target.Name}!");
             Thread.Sleep(1000);
 
@@ -36,15 +31,6 @@ namespace BattleArena.Warriors
 
             if (target.IsAlive)
                 Console.WriteLine($"\t-> {target.Name}: Patay ka ngayon! {target.Name}");
-
-            Thread.Sleep(1000);
-            Console.WriteLine($"\t------ {target.Name} --------");
-            Console.WriteLine($"\t  *Damage Taken: {totalDamage} *");
-            Console.WriteLine($"\t  *Remaining Health: {target.Health} *");
-
-
-
-
         }
     }
 }
